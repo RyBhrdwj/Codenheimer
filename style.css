@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+
+:root {
+    --char-w: 1ch;
+    --gap: calc(0.3 * var(--char-w));
+    --n-char: 10;
+    --in-w: calc(var(--n-char) * (var(--char-w) + var(--gap)));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "VT323", monospace;
+}
+
+.screen {
+    background: repeating-linear-gradient(to bottom,#221900,#181201 4px,#060114 4px,#060114 8px);
+    color: #00FF36;
+    height: 100vh;
+    font-size: 4em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+h2{
+    margin: 10% 0% 10%;
+    opacity: 0.65;
+}
+
+input {
+    border: none;
+    font-size: 1em;
+    width: var(--in-w);
+    letter-spacing: var(--gap);
+    
+    color: #00FF36;
+    background: repeating-linear-gradient(90deg, #009520 0, #009520 var(--char-w), 
+    transparent 0, transparent calc(var(--char-w) + var(--gap))) 0 100% / calc(var(--in-w) - var(--gap)) 
+    2px no-repeat;
+
+    opacity: 0.65;
+    text-transform: uppercase;
+}
+
+input:focus {
+    outline: none;
+    color: #00FF36;
+}
+  

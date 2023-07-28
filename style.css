@@ -1,53 +1,125 @@
 @import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
 
 :root {
-    --char-w: 1ch;
-    --gap: calc(0.3 * var(--char-w));
-    --n-char: 10;
-    --in-w: calc(var(--n-char) * (var(--char-w) + var(--gap)));
+  --char-w: 1ch;
+  --gap: calc(0.3 * var(--char-w));
+  --n-char: 10;
+  --in-w: calc(var(--n-char) * (var(--char-w) + var(--gap)));
+  --accent: #1dc541;
+  --crt1: #221900;
+  --crt2: #181201;
+  --crt3: #060114;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "VT323", monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "VT323", monospace;
 }
 
 .screen {
-    background: repeating-linear-gradient(to bottom,#221900,#181201 4px,#060114 4px,#060114 8px);
-    color: #00FF36;
-    height: 100vh;
-    font-size: 4em;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  background: repeating-linear-gradient(
+    var(--crt1) 0px,
+    var(--crt1) 3px,
+    var(--crt2) 3px,
+    var(--crt3) 3px,
+    var(--crt3) 6px
+  );
+  background-position: 0 0;
+  animation: moveBG 0.5s linear infinite;
+  color: var(--accent);
+  font-size: 4em;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-h2{
-    margin: 10% 0% 10%;
-    opacity: 0.65;
+h2 {
+  margin: 10% 0% 10%;
+  opacity: 0.65;
+  animation: jitter 0.5s infinite, blink 4s infinite;
 }
 
 input {
-    border: none;
-    font-size: 1em;
-    width: var(--in-w);
-    letter-spacing: var(--gap);
-    
-    color: #00FF36;
-    background: repeating-linear-gradient(90deg, #009520 0, #009520 var(--char-w), 
-    transparent 0, transparent calc(var(--char-w) + var(--gap))) 0 100% / calc(var(--in-w) - var(--gap)) 
-    2px no-repeat;
+  border: none;
+  animation: jitter 0.5s infinite, blink 4s infinite;
+  font-size: 1em;
+  width: var(--in-w);
+  letter-spacing: var(--gap);
 
-    opacity: 0.65;
-    text-transform: uppercase;
+  color: var(--accent);
+  background: repeating-linear-gradient(
+      90deg,
+      #009520 0,
+      #009520 var(--char-w),
+      transparent 0,
+      transparent calc(var(--char-w) + var(--gap))
+    )
+    0 100% / calc(var(--in-w) - var(--gap)) 2px no-repeat;
+
+  opacity: 0.65;
+  text-transform: uppercase;
 }
 
 input:focus {
-    outline: none;
-    color: #00FF36;
+  outline: none;
+  color: var(--accent);
 }
-  
+
+@keyframes jitter {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1px, 0px);
+  }
+  50% {
+    transform: translate(1px, 0px);
+  }
+  75% {
+    transform: translate(-1px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.65;
+  }
+  49% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  51% {
+    opacity: 0.65;
+  }
+  73% {
+    opacity: 0.65;
+  }
+  74% {
+    opacity: 0.25;
+  }
+  75% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes moveBG {
+  0% {
+    background-position: 0 6px;
+  }
+
+  100% {
+    background-position: 300px 0px;
+  }
+}

@@ -9,7 +9,12 @@ async function checkCode()
         return data;
 
     } catch (error) {
-        console.log("An Error Occured");
+        const screen = document.querySelector(".screen");
+        screen.innerHTML = '';
+
+        const mssg = document.createElement("h2");
+        mssg.textContent = "An Error Occured";
+        screen.appendChild(mssg);
     }
 }
 

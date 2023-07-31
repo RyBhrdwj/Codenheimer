@@ -1,9 +1,10 @@
 async function checkCode()
 {
-    const code = document.querySelector("input");
+    const inputElement = document.querySelector("input");
+    const code = inputElement.value.toLowerCase();
 
     try {
-        const response = await fetch(`https://codenheimer-api.onrender.com/code/?code=${code.value}`);
+        const response = await fetch(`https://codenheimer-api.onrender.com/code/?code=${code}`);
         const data = await response.json();
         return data;
 

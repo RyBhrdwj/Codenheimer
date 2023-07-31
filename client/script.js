@@ -33,7 +33,7 @@ async function displayMessage()
     screen.appendChild(mssg);
 }
 
-// Display message is called can when either enter is pressed or when input field is completely filled.
+// Display message is called if either enter is pressed or when input field is completely filled.
 
 document.addEventListener("keydown", async (event) => {
     if (event.key === "Enter")

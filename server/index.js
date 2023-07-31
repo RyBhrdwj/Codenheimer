@@ -2,10 +2,17 @@ const { readData } = require("./Collection.js");
 const express = require("express");
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
+  res.send("Hello, the api is working on /code/");
+});
+
+app.get("/code/", (req, res) => {
   console.log(req.query.code);
   readData("nuclear-codes", { code: req.query.code }).then((data) => {
-    res.send(data.length > 0 ? true : false);
+    if (data.length > 0) res.send(true);
+    else res.send(false);
   });
 });
 

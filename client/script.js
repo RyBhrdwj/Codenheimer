@@ -2,6 +2,8 @@ const video = document.querySelector("video");
 const screen = document.querySelector(".screen");
 const lastFrame = document.querySelector("img.background");
 const launch = document.querySelector(".launch");
+const loadingDiv = document.querySelector(".loading");
+const screen1 = document.querySelectorAll(".screen-1");
 
 video.addEventListener("ended", () => {
   video.classList.add("hide");
@@ -31,25 +33,36 @@ async function checkCode() {
 
 async function displayMessage() {
   const isWinner = await checkCode();
-  const screen = document.querySelector(".screen");
+  if (isWinner == false) {
+    const screen = document.querySelector(".screen");
+    screen.innerHTML = "";
 
-  screen.innerHTML = "";
+    const mssg = document.createElement("h2");
+    mssg.classList.add("wrong");
+    mssg.textContent = "Invalid Code";
 
-  const mssg = document.createElement("h2");
-
-  if (isWinner === false) {
-    mssg.textContent = "FUCK YOU !!!";
+    const msg2 = document.createElement("p");
+    msg2.textContent = "Get Rickrolled now!";
+    msg2.classList.add("wrong-2");
+    screen.appendChild(mssg);
+    screen.appendChild(msg2);
+    setTimeout(() => {
+      window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }, 2000);
   } else {
-    mssg.textContent = `Congratulations ! You've got ${isWinner} Place.`;
+    window.location = isWinner;
   }
-
-  screen.appendChild(mssg);
 }
 
 // Display message is called if either enter is pressed or when input field is completely filled.
 
-launch.addEventListener("click", async (event) => {
-  await displayMessage();
+launch.addEventListener("click", (event) => {
+  screen1.forEach((screen) => {
+    screen.classList.add("hideNone");
+  });
+  loadingDiv.classList.remove("hideNone");
+  loadingDiv.classList.add("animated");
+  loadingDiv.addEventListener("animationend", displayMessage);
 });
 
 // document.addEventListener("input", (event) => {

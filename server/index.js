@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 app.get("/code/", (req, res) => {
   console.log(req.query.code);
   readData("nuclear-codes", { code: req.query.code }).then((data) => {
-    if (data.length > 0) res.send(data[0].url);
+    if (data.length > 0) res.send([data[0].url]);
     else res.send(false);
   });
 });

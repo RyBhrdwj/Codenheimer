@@ -34,7 +34,6 @@ async function checkCode() {
 async function displayMessage() {
   const isWinner = await checkCode();
   if (isWinner == false) {
-    const screen = document.querySelector(".screen");
     screen.innerHTML = "";
 
     const mssg = document.createElement("h2");

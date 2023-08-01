@@ -5,10 +5,21 @@ const launch = document.querySelector(".launch");
 const loadingDiv = document.querySelector(".loading");
 const screen1 = document.querySelectorAll(".screen-1");
 
-video.addEventListener("ended", () => {
+console.log(window.innerWidth);
+if (window.innerWidth < 1200) {
+  showScreen();
+  lastFrame.parentElement.removeChild(lastFrame);
+  video.parentElement.removeChild(video);
+}
+
+function showScreen() {
   video.classList.add("hide");
   lastFrame.classList.remove("hide");
   screen.classList.remove("hide");
+}
+
+video.addEventListener("ended", () => {
+  showScreen();
 });
 
 function displayMessage() {

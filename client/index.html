@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
     <title>Code-N-Heimer</title>
-
-</head>
-<body>
-    <div class="screen">
-        <h2>ENTER THE NUCLEAR CODE</h2>
-        <input maxlength='10'/>
-    </div>
+  </head>
+  <body>
     <div>
-        
+      <video
+        src="videos/1-0001-0168.mp4"
+        autoplay
+        muted
+        class="background"
+      ></video>
+      <img src="images/bg.png" class="hide background" />
     </div>
-</body>
+    <div class="screen hide">
+      <span class="logo"></span>
+      <h2>ENTER THE NUCLEAR CODE</h2>
+      <input type="text" maxlength="10" autofocus />
+      <button class="launch">LAUNCH</button>
+    </div>
+  </body>
 </html>
